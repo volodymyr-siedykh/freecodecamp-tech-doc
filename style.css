@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  min-width: 29rem;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style-position: inside;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #20232A;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 1rem 0;
+}
+
+.header ul li {
+  list-style: none;
+}
+
+.logo {
+  display: flex;
+  gap: 1rem;
+}
+
+.logo img {
+  width: 2rem;
+}
+
+.logo h1 {
+  font-size: 2rem;
+  color: #61DAFB;
+}
+
+.navigation ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.navigation ul li {
+  padding: 0.5rem;
+}
+
+.navigation ul li:hover {
+  background: grey;
+}
+
+@media (max-width: 768px) {
+  .navigation ul {
+    gap: 0.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.container {
+  padding: 7rem 5rem 5rem 5rem;
+}
+
+#navbar {
+  position: fixed;
+  top: 7rem;
+  left: 0;
+  width: 30%;
+}
+
+#navbar header h2 {
+  padding: 0 3rem;
+}
+
+#navbar ul li {
+  list-style: none;
+}
+
+.content {
+  position: absolute;
+  left: 30%;
+  padding-left: 5rem;
+}
+
+#navbar ul {
+  height: 88%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#navbar li {
+  color: #4d4e53;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 30px;
+  color: #4d4e53;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+section article {
+  color: #4d4e53;
+  margin: 15px;
+  font-size: 0.96em;
+}
+
+section li {
+  margin: 15px 0px 0px 20px;
+}
+
+code {
+  display: block;
+  text-align: left;
+  white-space: pre-line;
+  position: relative;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  .navigation {
+    display: none;
+  }
+
+  #navbar {
+    position: absolute;
+    top: 7rem;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: auto;
+    text-align: center;
+    border: none;
+    z-index: 1;
+    border-bottom: 1px solid;
+  }
+
+  .content {
+    position: relative;
+    text-align: center;
+    left: 0;
+    top: 37rem;
+    padding: 0;
+  }
+}

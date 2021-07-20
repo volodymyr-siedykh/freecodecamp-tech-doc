@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <title>Technical Documentation</title>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="img/logo.svg" alt="">
+      <h1>React</h1>
+    </a>
+    <nav class="navigation">
+      <ul>
+        <li><a href="">Docs</a></li>
+        <li><a href="">Tutorial</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Community</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-doc">
+    <div class="container">
+      <nav id="navbar">
+        <header><h2>React Documentation</h2></header>
+        <ul>
+          <li><a class="nav-link" href="#Getting_started_with_React">Getting started with React</a></li>
+          <li>
+            <a class="nav-link" href="#Beginning_our_React_todo_list">Beginning our React todo list</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#Componentizing_our_React_app">Componentizing our React app</a>
+          </li>
+          <li><a class="nav-link" href="#React_interactivity:_Events_and_state">React interactivity: Events and state</a></li>
+          <li><a class="nav-link" href="#Editing,_filtering,_conditional_rendering">Editing, filtering, conditional rendering</a></li>
+          <li>
+            <a class="nav-link" href="#Accessibility_in_React">Accessibility in React</a>
+          </li>
+          <li><a class="nav-link" href="#React_resources">React resources</a></li>
+
+        </ul>
+      </nav>
+      <div class="content">
+        <section class="main-section" id="Getting_started_with_React">
+          <header><h2>Getting started with React</h2></header>
+          <article>
+            <h3>Hello React</h3>
+            <p>
+              As its official tagline states, React is a library for building user interfaces. React is not a framework – it's not
+              even exclusive to the web. It's used with other libraries to render to certain environments. For instance, React Native
+              can be used to build mobile applications; React 360 can be used to build virtual reality applications; and there are
+              other possibilities besides.
+            </p>
+            <p>
+              To build for the web, developers use React in tandem with ReactDOM. React and ReactDOM are often discussed in the same
+              spaces as — and utilized to solve the same problems as — other true web development frameworks. When we refer to React
+              as a "framework", we’re working with that colloquial understanding.
+            </p>
+            <p>
+              React's primary goal is to minimize the bugs that occur when developers are building UIs. It does this through the use
+              of components — self-contained, logical pieces of code that describe a portion of the user interface. These components
+              can be composed together to create a full UI, and React abstracts away much of the rendering work, leaving you to
+              concentrate on the UI design.
+            </p>
+            <h3>Use cases</h3>
+            <p>
+              Unlike the other frameworks covered in this module, React does not enforce strict rules around code conventions or file
+              organization. This allows teams to set conventions that work best for them, and to adopt React in any way they would
+              like to. React can handle a single button, a few pieces of an interface, or an app's entire user interface.
+            </p>
+            <p>
+              While React can be used for small pieces of an interface, it's not as easy to "drop into" an application as a library
+              like jQuery, or even a framework like Vue — it is more approachable when you build your entire app with React.
+            </p>
+            <p>
+              In addition, many of the developer-experience benefits of a React app, such as writing interfaces with JSX, require a
+              compilation process. Adding a compiler like Babel to a website makes the code on it run slowly, so developers often set
+              up such tooling with a build step. React arguably has a heavy tooling requirement, but it can be learned.
+            </p>
+            <p>
+              This article is going to focus on the use case of using React to render the entire user interface of an application,
+              using tooling provided by Facebook’s own create-react-app tool.
+            </p>
+          </article>
+        </section>
+        <section class="main-section" id="Beginning_our_React_todo_list">
+          <header><h2>Beginning our React todo list</h2></header>
+          <article>
+            <h3>Our app's user stories</h3>
+              <p>
+                In software development, a user story is an actionable goal from the perspective of the user. Defining user stories
+                before we begin our work will help us focus our work. Our app should fulfill the following stories:
+              </p>
+              <ul>
+                As a user, I can
+                <li>read a list of tasks.</li>
+                <li>add a task using the mouse or keyboard.</li>
+                <li>mark any task as completed, using the mouse or keyboard.</li>
+                <li>delete any task, using the mouse or keyboard.</li>
+                <li>edit any task, using the mouse or keyboard.</li>
+                <li>view a specific subset of tasks: All tasks, only the active task, or only the completed tasks.</li>
+                We'll tackle these stories one-by-one.
+              </ul>
+              <h3>Pre-project housekeeping</h3>
+              <ul>
+                create-react-app has made a few files we won't be using at all for our project.
+                <li>We're not going to write per-component stylesheets, so first delete the App.css import from the top of <code>App.js</code>.</li>
+                <li>We are also not going to be using the <code>logo.svg</code> file, so remove that import too.</li>
+                Then, copy and paste the following commands into your terminal to delete some unneeded files. Make sure you’re starting
+                in the app's root directory!
+              </ul>
+              <code>
+                # Move into the src directory of your project
+                cd src
+                # Delete a few files
+                rm -- App.test.js App.css logo.svg serviceWorker.js setupTests.js
+                # Move back up to the root of the project
+                cd ..
+              </code>
+          </article>
+        </section>
+        <section class="main-section" id="Componentizing_our_React_app">
+          <header>Componentizing our React app</header>
+          <article>
+            <h3>Defining our first component</h3>
+            <ul>
+              Defining a component can seem tricky until you have some practice, but the gist is:
+              <li>If it represents an obvious "chunk" of your app, it's probably a component</li>
+              <li>If it gets reused often, it's probably a component.</li>
+            </ul>
+            <p>That second bullet is especially valuable: making a component out of common UI elements allows you to change your code
+            in one place and see those changes everywhere that component is used. You don't have to break everything out into
+            components right away, either. Let's take the second bullet point as inspiration and make a component out of the most
+            reused, most important piece of the UI: a todo list item.
+            </p>
+            <h3>Make a ToDoList</h3>
+            <p>
+              Before we can make a component, we should create a new file for it. In fact, we should make a directory just for our
+              components. The following commands make a components directory and then, within that, a file called Todo.js. Make sure
+              you're in the root of your app before you run these!
+            </p>
+            <p>
+              <code>mkdir src/components <br>
+                    touch src/components/Todo.js</code>
+              Our new Todo.js file is currently empty! Open it up and give it its first line:
+              <code>import React from "react";</code>
+              Since we're going to make a component called Todo, you can start adding the code for that to Todo.js too, as follows. In
+              this code, we define the function and export it on the same line:
+            </p>
+            <code>
+              export default function Todo() {
+              return (
+              
+              );
+              }
+            </code>
+
+          </article>
+        </section>
+        <section class="main-section" id="React_interactivity:_Events_and_state">
+          <header><h2>React interactivity: Events and state</h2></header>
+          <article>
+            <h3>Handling events</h3>
+            <p>If you've only written vanilla JavaScript before now, you might be used to having a separate JavaScript file, where you
+            query for some DOM nodes and attach listeners to them. For example:</p>
+            <code>const btn = document.querySelector('button');
+            
+            btn.addEventListener('click', () => {
+            alert("hi!");
+            });</code>
+            <p>In React, we write event handlers directly on the elements in our JSX, like this:</p>
+            <code>
+              <button type="button" onClick=> alert("hi!")}
+                >
+                Say hi!
+              </button>
+            </code>
+            <p>In the above example, we're adding an onClick attribute to the <button> element. The value of that attribute is a
+              function that triggers a simple alert.</p>
+            <ul>
+              The onClick attribute has special meaning here: it tells React to run a given function when the user clicks on the
+              button. There are a couple of other things to note:
+              <li>The camel-cased nature of onClick is important — JSX will not recognize onclick (again, it is already used in JavaScript
+              for a specific purpose, which is related but different — standard onclick handler properties).</li>
+              <li>All browser events follow this format in JSX – on, followed by the name of the event.</li>
+            </ul>
+            <h3>
+              Callback props
+            </h3>
+            <p>In React applications, interactivity is rarely confined to just one component: events that happen in one component will
+            affect other parts of the app. When we start giving ourselves the power to make new tasks, things that happen in the
+            <Form > component will affect the list rendered in
+            <App />.</p>
+            <p>We want our handleSubmit() function to ultimately help us create a new task, so we need a way to pass information from
+            <Form > to
+            <App />. We can't pass data from child to parent in the same way as we pass data from parent to child using standard
+            props. Instead, we can write a function in
+            <App /> that will expect some data from our form as an input, then pass that function to
+            <Form > as a prop. This function-as-a-prop is called a callback prop. Once we have our callback prop, we can call it
+            inside
+            <Form > to send the right data to
+            <App />.</p>
+          </article>
+        </section>
+        <section class="main-section" id="Editing,_filtering,_conditional_rendering">
+          <header><h2>Editing, filtering, conditional rendering</h2></header>
+          <article>
+            <h3>Editing the name of a task</h3>
+            <p>We don’t have a user interface for editing the name of a task yet. We'll get to that in a moment. To start with, we can
+            at least implement an editTask() function in App.js. It’ll be similar to deleteTask() because it'll take an id to find
+            its target object, but it'll also take a newName property containing the name to update the task to. We'll use
+            Array.prototype.map() instead of Array.prototype.filter() because we want to return a new array with some changes,
+            instead of deleting something from the array.</p>
+            <code>function editTask(id, newName) {
+            const editedTaskList = tasks.map(task => {
+            // if this task has the same ID as the edited task
+            if (id === task.id) {
+            //
+            return {...task, name: newName}
+            }
+            return task;
+            });
+            setTasks(editedTaskList);
+            }</code>
+            <code>
+              const taskList = tasks.map(task => (
+              <Todo id={task.id} name={task.name} completed={task.completed} key={task.id} toggleTaskCompleted={toggleTaskCompleted}
+                deleteTask={deleteTask} editTask={editTask} />
+              ));
+            </code>
+            <h3>A UI for editing</h3>
+            <p>In order to allow users to edit a task, we have to provide a user interface for them to do so. First, import useState
+            into the Todo component like we did before with the App component, by updating the first import statement to this:</p>
+          </article>
+        </section>
+        <section class="main-section" id="Accessibility_in_React">
+          <header><h2>Accessibility in React</h2></header>
+          <article>
+            <h3>Including keyboard users</h3>
+            <p>At this point, we've accomplished all of the features we set out to implement. A user can add a new task, check and
+            uncheck tasks, delete tasks, or edit task names. And they can filter their task list by all, active, or completed tasks.</p>
+            <p>Or, at least: they can do all of these things with a mouse. Unfortunately, these features are not very accessible to
+            keyboard-only users. Let's explore this now.</p>
+            <h3>Exploring the keyboard usability problem</h3>
+            <p>Start by clicking on the input at the top of our app, as if you're going to add a new task. You'll see a thick, dashed
+            outline around that input. This outline is your visual indicator that the browser is currently focused on this element.
+            Press the Tab key, and you will see the outline appear around the "Add" button beneath the input. This shows you that
+            the browser's focus has moved.
+            
+            Press Tab a few more times, and you will see this dashed focus indicator move between each of the filter buttons. Keep
+            going until the focus indicator is around the first "Edit" button. Press Enter.
+            
+            The
+            <Todo /> component will switch templates, as we designed, and you'll see a form that lets us edit the name of the task.
+            
+            But where did our focus indicator go?
+            
+            When we switch between templates in our
+            <Todo /> component, we completely remove the elements that were there before to replace them with something else. That
+            means the element that we were focused on vanishes, and nothing is in focus at all. This could confuse a wide variety of
+            users — particularly users who rely on the keyboard, or users who use a screen reader.
+            
+            To improve the experience for keyboard and screen-reader users, we should manage the browser’s focus ourselves.</p>
+          </article>
+        </section>
+        <section class="main-section" id="React_resources">
+          <header><h2>React resources</h2></header>
+          <article>
+            <h3>Component-level styles</h3>
+            <p>Although this tutorial doesn't use this approach, many React applications define their styles on a per-component basis,
+            rather than in a single, monolithic stylesheet.</p>
+            <p>
+              create-react-app makes it possible to import CSS files into JavaScript modules, so that CSS is only sent to your user
+              when the corresponding component is rendered. For this app, we could have for example written a dedicated Form.css file
+              to house the styles of those respective components, then imported the styles into their respective modules like this:
+            </p>
+            <code>import Form from './Form';
+            import './Form.css'</code>
+            <p>This approach makes it easy to identify and manage the CSS that belongs to a specific component. However, it also
+            fragments your stylesheet across your codebase, and this fragmentation might not be worthwhile. For larger applications
+            with hundreds of unique views and lots of moving parts, it makes sense to limit the amount of irrelevant code that's
+            sent to your user. You'll likely have app-wide styles and specific component styles that built on top of those.</p>
+            <h3>React DevTools</h3>
+            <p>We used console.log() to check on the state and props of our application in this tutorial, and you'll also have seen
+            some of the useful warnings and error message that react gives you both in the CLI and your browser's JavaScript
+            console. But there's more we can do here.</p>
+            <p>The React DevTools utility allows you to inspect the internals of your React application directly in the browser. It
+            adds a new panel to your browser's developer tools, and with it you can inspect the state and props of various
+            components, and even edit state and props to make immediate changes to your application.</p>
+            <p>On the left, we see all of the components that make up our application, including some unique keys for the things that
+            are rendered from arrays. On the right, we see the props and hooks that our App component utilizes. Notice, too, that
+            the Form, FilterButton, and Todo components are indented to the right – this indicates that App is their parent. In more
+            complex apps, this view is great for understanding parent/child relationships at a glance.</p>
+          </article>
+        </section>
+      </div>
+    </div>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
